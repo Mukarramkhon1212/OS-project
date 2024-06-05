@@ -1,0 +1,21 @@
+byte fan_motor = 2;
+byte hum_sensor = A0;
+int sensor_value;
+int normal_sensor_value = 300;
+void setup() {
+pinMode(hum_sensor, INPUT);
+pinMode(fan_motor, OUTPUT);
+Serial.begin(9600);
+}
+void loop() {
+  sensor_value = analogRead(A0);
+    if(sensor_value < normal_sensor_value){
+      digitalWrite(fan_motor, HIGH);
+      Serial.write("Fan motor is rotating...");
+    }
+    else{
+      digitalWrite(fan_motor, LOW);
+      Serial.write("Fan motor is OFF.");
+      }
+  
+}
